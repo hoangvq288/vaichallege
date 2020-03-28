@@ -1,31 +1,31 @@
+const NON_LEXICAL_WORDS = ['to', 'got', 'is', 'have', 'and', 'although',
+'or', 'that', 'when', 'while', 'a', 'either', 'more', 'much', 'neither', 'my',
+'that', 'the', 'as', 'no', 'nor', 'not', 'at', 'between', 'in', 'of', 'without',
+'i', 'you', 'he', 'she', 'it', 'we', 'they', 'anybody', 'one']
 
-const NON_LEXICAL_WORDS = ['to', 'the']
 
-
-const handleComplexity = (text) => {
-  let nonLexicalWordsNumber = 0
-  let words = text.split(" ")
- // console.log(words)
+const lexicalDestiny = (input) => {
+  let words = input.split(' ')
+  let lexicalWordsNumber = 0
   words.forEach(word => {
-    if(NON_LEXICAL_WORDS.includes(word.toLowerCase())) {
-      nonLexicalWordsNumber += 1
+    if (!NON_LEXICAL_WORDS.includes(word.toLowerCase())) {
+      lexicalWordsNumber += 1
     }
-  });
-  let lexicalDestiny = (words.length - nonLexicalWordsNumber)/words.length
-  return lexicalDestiny
+  })
+  return +(lexicalWordsNumber / words.length).toFixed(2)
 }
 
-const handleComplexityVerbose = async (text) => {
+const complexityVerbose = async (text) => {
   let sentences = text.split(".")
   let data = await Promise.all(sentences.map(sentence => {
     return new Promise((resolve, reject) => {
-      resolve(handleComplexity(sentence))
+      resolve(lexicalDestiny(sentence))
     })
   }))
   return data
 }
 
 module.exports = {
-  handleComplexity,
-  handleComplexityVerbose
+  lexicalDestiny,
+  complexityVerbose
 }
