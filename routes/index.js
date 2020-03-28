@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getIndex, getComplexity} = require('../controllers/index')
+const { getIndex, postComplexity} = require('../controllers/index')
 
 router.get('/', getIndex);
-router.get('/', getComplexity);
+router.post('/complexity', postComplexity);
 
 
 module.exports = router;

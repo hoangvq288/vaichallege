@@ -1,8 +1,20 @@
+const { handleComplexity, handleComplexityVerbose} = require('../services/complexity')
 module.exports = {
   getIndex(req, res, next) {
-    res.send('Welcome to VAItrade')
+    res.send({status: 'success', message: 'Welcome To VAItrade API'})
   },
-  getComplexity(req, res, next) {
-    res.send('Get complexity')
+
+  postComplexity(req, res, next) {
+    if(req.query.mode == 'verbose') {
+      res.send({
+        "data": {
+          sentence_ld: [0.67, 1],
+          overall_ld: 0.42
+        }
+      })
+    } else {
+      res.send({"data": {overall_ld: 0.67}})
+    }
+
   }
 }

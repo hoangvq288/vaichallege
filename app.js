@@ -13,7 +13,9 @@ const indexRouter = require('./routes/index');
 app.use('/', indexRouter)
 
 
-app.listen(port, () => {
+server = app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
+
+module.exports = { server }
 
