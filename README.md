@@ -15,6 +15,9 @@ segment.
 - run `npm install`
 - run `npm run dev` to start server. Check out by going to localhost:8080
 
+if you cannot run via bash console. Then you can
+- npm install nodemon -g --save
+- Edit the ~/.bashrc file in your home folder and add this line: export PATH=$PATH:~/npm
 ### Using Postman for validate API
 - GET /
 - POST /complexity
